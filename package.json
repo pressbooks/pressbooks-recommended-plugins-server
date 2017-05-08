@@ -1,9 +1,9 @@
 {
-  "name": "better-plugin-recommendations-server",
+  "name": "pressbooks-recommended-plugins-server",
   "version": "1.0.0",
-  "description": "The Server that powers Better Plugin Recommendations for WordPress",
+  "description": "The server that powers the Recommended plugins tab in Pressbooks",
   "main": "index.js",
-  "repository": "git@github.com:sparkdevio/better-plugin-recommendations-server.git",
+  "repository": "git@github.com:pressbooks/pressbooks-recommended-plugins-server.git",
   "author": "Joey Kudish <contact@sparkdev.io>",
   "license": "GPL-2.0",
   "scripts": {
