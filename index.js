@@ -14,7 +14,7 @@ server.route({
     method: 'GET',
     path:'/',
     handler: function (request, reply) {
-        return reply.redirect('https://github.com/pressbooks/pressbooks-plugin-recommendations');
+        return reply.redirect('https://github.com/pressbooks/pressbooks-recommended-plugins-server/');
     }
 });
 
