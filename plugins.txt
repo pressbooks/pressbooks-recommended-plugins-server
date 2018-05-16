@@ -1,3 +1,4 @@
 hypothesis
-pressbooks-textbook
 pressbooks-mpdf
+pressbooks-textbook
+wp-quicklatex
