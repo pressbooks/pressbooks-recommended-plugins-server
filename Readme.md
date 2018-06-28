@@ -12,7 +12,6 @@ Feel free to fork this repository to power your own server.
 * You should probably have `yarn` installed, but you can get away with just `npm`
 * Install with `yarn` (or `npm install` if you prefer the old school route)
 * Start the server with `yarn start` (or `npm start` I guess)
-* Deploy with [`now`](https://zeit.co/now) super easily if you'd like
 * OPTIONAL: add a filter to the `pb_recommended_plugins_url` hook which returns the URL of the host where you're serving the API from.
 
 ## Adding Plugins
