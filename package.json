@@ -16,5 +16,8 @@
     "jfile": "^1.1.12",
     "lodash": "^4.17.4",
     "memory-cache": "^0.1.6"
+  },
+  "now": {
+    "alias": "pressbooks-plugins"
   }
 }
