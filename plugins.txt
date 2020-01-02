@@ -4,3 +4,4 @@ pressbooks-mpdf
 pressbooks-textbook
 tablepress
 wp-quicklatex
+enable-media-replace
