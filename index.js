@@ -1,10 +1,11 @@
-const Hapi = require('@hapi/hapi');
+const Hapi = require('hapi');
 const JFile = require('jfile');
 const async = require('async');
 const filter = require('lodash').filter;
 const fetchPluginData = require('./fetch-plugin-data');
 
-const server = new Hapi.Server({
+const server = new Hapi.Server();
+server.connection({
     host: 'localhost',
     port: 3000
 });
@@ -12,30 +13,30 @@ const server = new Hapi.Server({
 server.route({
     method: 'GET',
     path:'/',
-    handler: function (request, h) {
-        return h.redirect('https://github.com/pressbooks/pressbooks-recommended-plugins-server/');
+    handler: function (request, reply) {
+        return reply.redirect('https://github.com/pressbooks/pressbooks-recommended-plugins-server/');
     }
 });
 
 server.route({
     method: 'GET',
     path:'/api/plugin-recommendations',
-    handler: async function (request, h) {
+    handler: function (request, reply) {
         const pluginsFile = new JFile( __dirname + '/plugins.txt' );
         const pluginsToFetch = filter( pluginsFile.lines );
-        return await async.map(
+        return async.map(
             pluginsToFetch,
             fetchPluginData,
             ( err, results ) => {
                 const plugins = filter(results);
-                return {
-                        info: {
-                            page: 1,
-                            pages: 1,
-                            results: plugins.length,
-                        },
-                        plugins
-                };
+                return reply({
+                    info: {
+                        page: 1,
+                        pages: 1,
+                        results: plugins.length,
+                    },
+                    plugins
+                });
             }
         );
     }
