@@ -23,7 +23,7 @@ server.route({
     handler: function (request, h) {
         const pluginsFile = new JFile( __dirname + '/plugins.txt' );
         const pluginsToFetch = filter( pluginsFile.lines );
-        const promise = new Promise((resolve, reject) => {
+        return new Promise(( resolve, reject ) => {
             async.map(
                 pluginsToFetch,
                 fetchPluginData,
@@ -40,7 +40,6 @@ server.route({
                 }
             );
         });
-        return promise;
     }
 });
 
