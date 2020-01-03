@@ -20,24 +20,27 @@ server.route({
 server.route({
     method: 'GET',
     path:'/api/plugin-recommendations',
-    handler: async function (request, h) {
+    handler: function (request, h) {
         const pluginsFile = new JFile( __dirname + '/plugins.txt' );
         const pluginsToFetch = filter( pluginsFile.lines );
-        return await async.map(
-            pluginsToFetch,
-            fetchPluginData,
-            ( err, results ) => {
-                const plugins = filter(results);
-                return {
-                        info: {
-                            page: 1,
-                            pages: 1,
-                            results: plugins.length,
-                        },
-                        plugins
-                };
-            }
-        );
+        const promise = new Promise((resolve, reject) => {
+            async.map(
+                pluginsToFetch,
+                fetchPluginData,
+                ( err, results ) => {
+                    const plugins = filter(results);
+                    resolve({
+                            info: {
+                                page: 1,
+                                pages: 1,
+                                results: plugins.length,
+                            },
+                            plugins
+                    });
+                }
+            );
+        });
+        return promise;
     }
 });
 
