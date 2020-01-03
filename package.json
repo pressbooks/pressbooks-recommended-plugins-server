@@ -10,9 +10,9 @@
     "start": "node index.js"
   },
   "dependencies": {
-    "@hapi/hapi": "^18.4.0",
-    "async": "^3.1.0",
-    "axios": "^0.19.0",
+    "async": "^2.2.0",
+    "axios": "^0.18.1",
+    "hapi": "^16.1.1",
     "jfile": "^1.1.12",
     "lodash": "^4.17.13",
     "memory-cache": "^0.1.6"
