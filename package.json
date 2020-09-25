@@ -1,20 +1,26 @@
 {
   "name": "pressbooks-recommended-plugins-server",
-  "version": "1.0.0",
-  "description": "The server that powers the Recommended plugins tab in Pressbooks",
-  "main": "index.js",
+  "version": "2.0.0",
+  "description": "The serverless function that powers the Recommended plugins tab in Pressbooks",
   "repository": "git@github.com:pressbooks/pressbooks-recommended-plugins-server.git",
-  "author": "Joey Kudish <contact@sparkdev.io>",
+  "contributors": [
+    "Joey Kudish <contact@sparkdev.io>",
+    "Ned Zimmerman <ned@bight.dev>"
+  ],
   "license": "GPL-2.0",
   "scripts": {
-    "start": "node index.js"
+    "start": "vercel dev",
+    "test": "xo"
+  },
+  "engines": {
+    "node": "12"
   },
   "dependencies": {
-    "@hapi/hapi": "^18.4.0",
-    "async": "^3.1.0",
-    "axios": "^0.19.0",
     "jfile": "^1.1.12",
-    "lodash": "^4.17.13",
-    "memory-cache": "^0.1.6"
+    "lodash": "^4.17.20",
+    "node-fetch": "^2.6.1"
+  },
+  "devDependencies": {
+    "xo": "^0.33.1"
   }
 }

@@ -1,19 +1,11 @@
-const axios = require('axios');
-const cache = require('memory-cache');
+const fetch = require('node-fetch');
 
-
-module.exports = (plugin, cb) => {
-    const cache_key = 'p_data_' + plugin;
-    const cache_expiry = 3600000; // 1h
-    let plugin_data = cache.get(cache_key);
-    if (plugin_data) {
-        return cb(null, plugin_data);
-    }
-
-    axios.get('https://api.wordpress.org/plugins/info/1.0/' + plugin + '.json?fields=banners,icons,active_installs,short_description').then(res => {
-        plugin_data = res.data;
-        cache.put(cache_key, plugin_data, cache_expiry);
-        return cb(null, plugin_data);
-    });
+const asyncFetchSinglePlugin = async plugin => {
+	const data = await fetch(`https://api.wordpress.org/plugins/info/1.0/${plugin}.json?fields=banners,icons,active_installs,short_description`);
+	const json = await data.json();
+	return json;
 };
 
+module.exports = async plugins => {
+	return Promise.all(plugins.map(plugin => asyncFetchSinglePlugin(plugin)));
+};
