@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "alias": "pressbooks-plugins.now.sh",
+  "redirects": [
+    { "source": "/", "destination": "https://github.com/pressbooks/pressbooks-recommended-plugins-server" }
+  ]
+}
